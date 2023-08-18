@@ -9,6 +9,9 @@ hamburger.onclick = function(){
     navBar.classList.toggle("active");
 }
 
+function redirectPage(temp){
+    window.location = `${temp}`
+}
 
 // Array of random image URLs
 let imageUrls = [
@@ -28,7 +31,6 @@ fetch(url)
   .then((response) => response.json())
   .then((cont) => {
     let ihtml = "";
-
     for (let item in cont) {
       // Select a random image URL from the array
       let randomImageUrl = imageUrls[Math.floor(Math.random() * imageUrls.length)];
@@ -46,7 +48,7 @@ fetch(url)
               <p>End Time   - ${cont[item].end_time}</p>
             </div>
             
-            <div class="bottom-btn"> <button class="but-read"><a href="${cont[item].url}">Visit Here</a></button></div>
+            <div class="bottom-btn"> <button class="but-read" onclick="redirectPage('${cont[item].url}')">Visit Here</button></div>
           </div>
         </div>`;
     }
